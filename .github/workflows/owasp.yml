@@ -1,0 +1,16 @@
+name: OWASP
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: OWASP Scan
+    steps:
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.3.0
+        with:
+          target: 'https://dev.eems-cac.me.uk/login'
