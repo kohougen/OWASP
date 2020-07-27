@@ -13,4 +13,5 @@ jobs:
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.3.0
         with:
-          target: 'https://www.google.co.jp/'
+          target: 'https://dev.eems-cac.me.uk/login'
+          fail_action: true
