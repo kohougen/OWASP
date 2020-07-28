@@ -22,9 +22,7 @@ jobs:
     needs: zap_scan
     steps: 
     - name: trigger katalon test
-      uses: appleboy/jenkins-action@master
-      with: 
-        url: "http://dev-poc3-loadblancer-903268067.ap-northeast-1.elb.amazonaws.com"
-        user: "user"
-        token: "117692ba38a05fb43686487552e1eba637"
-        job: "katalonExplore"
+      env: 
+        TOKEN_NAME: 117692ba38a05fb43686487552e1eba637
+      run: |
+        curl -gv --insecure http://dev-poc3-loadblancer-903268067.ap-northeast-1.elb.amazonaws.com/jenkins/job/katalonExplore/buildWithParameters?token=${TOKEN_NAME}
