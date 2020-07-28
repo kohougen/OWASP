@@ -23,6 +23,7 @@ jobs:
     steps: 
     - name: trigger katalon test
       env: 
-        TOKEN_NAME: 117692ba38a05fb43686487552e1eba637
+        TOKEN_AUTH: 11b5774142884d605482fec52bceaf28d5
+        TOKEN_TRIGGER: 117692ba38a05fb43686487552e1eba637
       run: |
-        curl -gv --insecure http://dev-poc3-loadblancer-903268067.ap-northeast-1.elb.amazonaws.com/jenkins/job/katalonExplore/buildWithParameters?token=${TOKEN_NAME}
+        curl -u user:${TOKEN_TRIGGER} http://dev-poc3-loadblancer-903268067.ap-northeast-1.elb.amazonaws.com/jenkins/job/katalonExplore/buildWithParameters?token=${TOKEN_TRIGGER}
