@@ -33,9 +33,9 @@ jobs:
       - name: Start Faraday Client
         run: |
           faraday-client --gui=nogui -w poc3-owasp-zap --login
-          http://dev-poc3-loadblancer-903268067.ap-northeast-1.elb.amazonaws.com:5985/
-          faraday
-          JzDFF9nJ7YF6
+          echo "http://dev-poc3-loadblancer-903268067.ap-northeast-1.elb.amazonaws.com:5985"
+          echo "faraday"
+          echo "JzDFF9nJ7YF6"
 
       # Upload ZAP Scan Report
       - name: Upload Scan Report
