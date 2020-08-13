@@ -29,13 +29,14 @@ jobs:
       
       - name: Install Faraday Client
         run: sudo apt install ./faraday-client_amd64.deb
+
+      - name: Create Credential File
+        run: echo -e '{\n  "username":"faraday",\n  "password":"JzDFF9nJ7YF6" \n}' > cred.json
       
-      - name: Start Faraday Client
+      - name: Start Faraday Client & Upload Report
         run: |
-          faraday-client --gui=nogui -w poc3-owasp-zap --login
-          echo "http://dev-poc3-loadblancer-903268067.ap-northeast-1.elb.amazonaws.com:5985"
-          echo "faraday"
-          echo "JzDFF9nJ7YF6"
+          mv ./report.xml /home/.faraday/report/poc3-owasp-zap/
+          faraday-client --cli -w poc3-owasp-zap --report /home/.faraday/report/poc3-owasp-zap/report.xml --creds-file ./cred.json
 
       # Upload ZAP Scan Report
       - name: Upload Scan Report
