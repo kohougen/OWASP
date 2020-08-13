@@ -35,4 +35,4 @@ jobs:
 
       # Upload Scan Report 
       - name: Start Faraday Client & Upload Scan Report
-        run: echo ${{ secrets.FARADAY_SERVER_URL }}\n${{ secrets.FARADAY_USERNAME }}\n${{ secrets.FARADAY_PASSWORD }} | faraday-client --cli -w poc3-owasp-zap --report ./report.xml --cert ./cred.json
+        run: echo -e '${{ secrets.FARADAY_SERVER_URL }} \n ${{ secrets.FARADAY_USERNAME }} \n ${{ secrets.FARADAY_PASSWORD }}' | faraday-client --cli -w poc3-owasp-zap --report ./report.xml --cert ./cred.json
