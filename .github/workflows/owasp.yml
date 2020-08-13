@@ -1,4 +1,4 @@
-name: OWASP
+name: OWASP ZAP SCAN
 
 on:
   push:
@@ -34,7 +34,7 @@ jobs:
         run: echo -e '{\n  "username":"faraday",\n  "password":"JzDFF9nJ7YF6" \n}' > cred.json
 
       - name: Start Faraday Client & Upload Report
-        run: ls /home/runner/work/OwASP
+        run: ls /home/runner/work
 
           # mv /home/runner/work/OWASP/OWASP/report.xml /home/.faraday/report/poc3-owasp-zap/
           # faraday-client --cli -w poc3-owasp-zap --report /home/.faraday/report/poc3-owasp-zap/report.xml --creds-file ./cred.json
