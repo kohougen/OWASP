@@ -7,7 +7,7 @@ on:
 
 jobs:
   zap_scan:
-    runs-on: ubuntu-latest
+    runs-on: debian-latest
     name: OWASP Scan
     steps:
       # # ZAP Scan
@@ -28,9 +28,7 @@ jobs:
         run: wget https://storage.googleapis.com/faraday-community/faraday-client_amd64.rpm
       
       - name: Install Faraday Client
-        run: |
-          sudo apt-get install alien
-          sudo alien ./faraday-client_amd64.rpm
+        run: sudo yum ./faraday-client_amd64.rpm
       
       - name: Start Faraday Client
         run: |
