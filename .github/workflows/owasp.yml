@@ -23,8 +23,8 @@ jobs:
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-I -x report.xml'
       
-      -name: get path
-       run: readlink -f ./report.xml
+      - name: get path
+        run: readlink -f ./report.xml
       
       # # Install Faraday Client
       # - name: Download Faraday Client
