@@ -25,10 +25,12 @@ jobs:
       
       # Install Faraday Client
       - name: Download Faraday Client
-        run: wget https://storage.googleapis.com/faraday-community/faraday-client_amd64.deb
+        run: wget https://storage.googleapis.com/faraday-community/faraday-client_amd64.rpm
       
       - name: Install Faraday Client
-        run: sudo dpkg –i ./faraday-client_amd64.deb
+        run: |
+          sudo apt-get install alien
+          sudo alien ./faraday-client_amd64.rpm
       
       - name: Start Faraday Client
         run: |
