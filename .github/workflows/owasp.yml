@@ -35,7 +35,6 @@ jobs:
 
       - name: Start Faraday Client & Upload Report
         run: |
-          ls /home/runner/work/.faraday
           ls /home/runner/.faraday
           ls /home/.faraday
           mv /home/runner/work/OWASP/OWASP/report.xml /home/runner/work/.faraday/report/poc3-owasp-zap/
