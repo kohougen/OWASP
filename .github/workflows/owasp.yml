@@ -28,7 +28,7 @@ jobs:
         run: wget https://storage.googleapis.com/faraday-community/faraday-client_amd64.deb
       
       - name: Install Faraday Client
-        run: sudo yum install faraday-client_amd64.rpm
+        run: sudo apt install faraday-client_amd64.rpm
       
       - name: Start Faraday Client
         run: |
