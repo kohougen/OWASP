@@ -10,18 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     name: OWASP Scan
     steps:
-      # # ZAP Scan
-      # - name: Checkout
-      #   uses: actions/checkout@v2
-      #   with:
-      #     ref: master
+      # ZAP Scan
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
 
-      # - name: ZAP Scan
-      #   uses: zaproxy/action-baseline@v0.3.0
-      #   with:
-      #     target: 'https://dev.eems-cac.me.uk/login'
-      #     rules_file_name: '.zap/rules.tsv'
-      #     cmd_options: '-I -x report.xml'
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.3.0
+        with:
+          target: 'https://dev.eems-cac.me.uk/login'
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-I -x report.xml'
       
       # Install Faraday Client
       - name: Download Faraday Client
