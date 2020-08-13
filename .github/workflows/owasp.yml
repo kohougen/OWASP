@@ -28,7 +28,9 @@ jobs:
         run: wget https://storage.googleapis.com/faraday-community/faraday-client_amd64.deb
 
       - name: Install Faraday Client
-        run: sudo apt install ./faraday-client_amd64.deb
+        run: |
+          sudo apt install ./faraday-client_amd64.deb
+          faraday-client --help
 
       - name: Create Credential File
         run: echo -e '{\n  "username":"faraday",\n  "password":"JzDFF9nJ7YF6" \n}' > cred.json
