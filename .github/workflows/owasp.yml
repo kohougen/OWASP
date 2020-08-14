@@ -38,5 +38,5 @@ jobs:
 
       # Upload Scan Report 
       - name: Start Faraday Client & Upload Scan Report
-        run: expect -c "spawn bash -c \"echo 'http://dev-poc3-loadblancer-903268067.ap-northeast-1.elb.amazonaws.com:5985/\n' | faraday-client --cli -w poc3-test --report ./report.xml --login\" ; expect \"Username (press enter for faraday):\" ; send \"faraday\n\" ; expect \"Password:\" ; send \"JzDFF9nJ7YF6\n\" ; interact "
+        run: expect -c "spawn bash -c \"echo 'http://dev-poc3-loadblancer-903268067.ap-northeast-1.elb.amazonaws.com:5985/\n' | faraday-client --cli -w poc3-test --report ./report.xml --login\" ; expect \"Username (press enter for faraday):\" ; send \"faraday\n\" ; expect \"Password:\" ; send \"KJzDFF9nJ7YF6\n\" ; interact "
         # run: echo -e '${{ secrets.FARADAY_SERVER_URL }} \n ${{ secrets.FARADAY_USERNAME }} \n ${{ secrets.FARADAY_PASSWORD }}' | faraday-client --cli -w poc3-owasp-zap --report ./report.xml --cert ./cred.json
