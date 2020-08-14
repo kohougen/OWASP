@@ -29,10 +29,14 @@ jobs:
 
       - name: Install Faraday Client
         run: sudo apt install ./faraday-client_amd64.deb
+      
+      - name: Install Expect
+        run: sudo apt install expect
 
-      - name: Create Credential File
-        run: echo -e '{\n  "username":"faraday",\n  "password":"JzDFF9nJ7YF6" \n}' > cred.json
+      # - name: Create Credential File
+      #   run: echo -e '{\n  "username":"faraday",\n  "password":"JzDFF9nJ7YF6" \n}' > cred.json
 
       # Upload Scan Report 
       - name: Start Faraday Client & Upload Scan Report
-        run: echo -e '${{ secrets.FARADAY_SERVER_URL }} \n ${{ secrets.FARADAY_USERNAME }} \n ${{ secrets.FARADAY_PASSWORD }}' | faraday-client --cli -w poc3-owasp-zap --report ./report.xml --cert ./cred.json
+        run: expect -c "spawn bash -c \"faraday-client --cli -w poc3-test --report ./report.xml --login\" ; expect \"Please enter the Faraday Server URL (Press enter for last used: http://localhost:5985):\" ; send \"http://dev-poc3-loadblancer-903268067.ap-northeast-1.elb.amazonaws.com:5985\n\" ; expect \"Username (press enter for faraday):\" ; send \"faraday\n\" ; expect \"Password:\" ; send \"JzDFF9nJ7YF6\n\" ; interact "
+        # run: echo -e '${{ secrets.FARADAY_SERVER_URL }} \n ${{ secrets.FARADAY_USERNAME }} \n ${{ secrets.FARADAY_PASSWORD }}' | faraday-client --cli -w poc3-owasp-zap --report ./report.xml --cert ./cred.json
