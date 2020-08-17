@@ -16,15 +16,21 @@ jobs:
         with:
           ref: master
 
-      - name: ZAP Scan
-        # uses: zaproxy/action-baseline@v0.3.0
+      # - name: ZAP Base Scan
+      #   uses: zaproxy/action-baseline@v0.3.0
+      #   with:
+      #     target: 'https://dev.eems-cac.me.uk/login'
+      #     rules_file_name: '.zap/rules.tsv'
+      #     cmd_options: '-I -x report.xml'
+      
+      - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.1.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           docker_name: 'owasp/zap2docker-stable'
           target: 'https://dev.eems-cac.me.uk/login'
           rules_file_name: '.zap/rules.tsv'
-          cmd_options: '-I -x report.xml'
+          cmd_options: '-a -r report.html'
       
       # # Install Faraday Client
       # - name: Download Faraday Client
