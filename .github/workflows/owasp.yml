@@ -17,27 +17,31 @@ jobs:
           ref: master
 
       - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0.3.0
+        # uses: zaproxy/action-baseline@v0.3.0
+        uses: zaproxy/action-full-scan@v0.1.0
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           target: 'https://dev.eems-cac.me.uk/login'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-I -x report.xml'
       
-      # Install Faraday Client
-      - name: Download Faraday Client
-        run: wget https://storage.googleapis.com/faraday-community/faraday-client_amd64.deb
+      # # Install Faraday Client
+      # - name: Download Faraday Client
+      #   run: |
+      #     mkdir faraday-client
+      #     cd faraday-client
+      #     wget https://storage.googleapis.com/faraday-community/faraday-client_amd64.deb
 
-      - name: Install Faraday Client
-        run: sudo apt install ./faraday-client_amd64.deb
+      # - name: Install Faraday Client
+      #   run: sudo apt install ./faraday-client_amd64.deb
       
-      - name: Install Expect
-        run: sudo apt install expect
+      # - name: Install Expect
+      #   run: sudo apt install expect
 
-      # Upload Scan Report 
-      - name: Start Faraday Client & Upload Scan Report
-        run: |
-          expect -c "spawn bash -c \"echo 'http://dev-poc3-loadblancer-903268067.ap-northeast-1.elb.amazonaws.com:5985/\n' | faraday-client --cli -w ret --report ./report.xml --login\" ; expect \"Username (press enter for faraday):\" ; send \"faraday\n\" ; expect \"Password:\" ; send \"JzDFF9nJ7YF6\n\" ; interact "
-          expect -c "spawn bash -c \"echo 'http://dev-poc3-loadblancer-903268067.ap-northeast-1.elb.amazonaws.com:5985/\n' | faraday-client --cli -w ret --report ./report.xml --login\" ; expect \"Username (press enter for faraday):\" ; send \"faraday\n\" ; expect \"Password:\" ; send \"JzDFF9nJ7YF6\n\" ; interact "
+      # # Upload Scan Report 
+      # - name: Start Faraday Client & Upload Scan Report
+      #   run: |
+      #     expect -c "spawn bash -c \"echo 'http://dev-poc3-loadblancer-903268067.ap-northeast-1.elb.amazonaws.com:5985/\n' | faraday-client --cli -w ret --report ./report.xml --login\" ; expect \"Username (press enter for faraday):\" ; send \"faraday\n\" ; expect \"Password:\" ; send \"JzDFF9nJ7YF6\n\" ; interact "
 
         # run: expect -c "spawn bash -c \"echo '${{ secrets.FARADAY_SERVER_URL }}\n' | faraday-client --cli -w poc3-test --report ./report.xml --login\" ; expect \"Username (press enter for faraday):\" ; send \"${{ secrets.FARADAY_USERNAME }}\n\" ; expect \"Password:\" ; send \"${{ secrets.FARADAY_PASSWORD }}\n\" ; interact "
         # run: echo -e '${{ secrets.FARADAY_SERVER_URL }} \n ${{ secrets.FARADAY_USERNAME }} \n ${{ secrets.FARADAY_PASSWORD }}' | faraday-client --cli -w poc3-owasp-zap --report ./report.xml --cert ./cred.json
