@@ -30,7 +30,7 @@ jobs:
           docker_name: 'owasp/zap2docker-stable'
           target: 'https://dev.eems-cac.me.uk/login'
           rules_file_name: '.zap/rules.tsv'
-          cmd_options: '-a -s'
+          cmd_options: '-a -s' 
       
       # # Install Faraday Client
       # - name: Download Faraday Client
