@@ -21,6 +21,7 @@ jobs:
         uses: zaproxy/action-full-scan@v0.1.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          docker_name: 'owasp/zap2docker-stable'
           target: 'https://dev.eems-cac.me.uk/login'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-I -x report.xml'
