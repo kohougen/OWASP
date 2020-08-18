@@ -32,11 +32,5 @@ jobs:
       #     rules_file_name: '.zap/rules.tsv'
       #     cmd_options: '-a' 
 
-      - name: ZAP Full Scan
-        uses: zaproxy/action-full-scan@v0.1.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          docker_name: 'ictu/zap2docker-weekly'
-          target: 'https://dev.eems-cac.me.uk'
-          rules_file_name: '.zap/rules.tsv'
-          cmd_options: 'zap-baseline.py -t https://dev.eems-cac.me.uk -r testreport.html --hook=/zap/auth_hook.py -z "auth.loginurl=https://dev.eems-cac.me.uk/login auth.username="huangfyloveqdd@gamil.com" auth.password="Test12345678!" auth.auto=1" ' 
+      - name: ZAP Basic Scan
+        run: docker run --rm -v $(pwd):/zap/wrk/:rw -t ictu/zap2docker-weekly zap-baseline.py -t https://dev.eems-cac.me.uk -r testreport.html --hook=/zap/auth_hook.py -z "auth.loginurl=https://dev.eems-cac.me.uk/login auth.username="huangfyloveqdd@gamil.com" auth.password="Test12345678!" auth.auto=1"
