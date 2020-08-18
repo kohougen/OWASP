@@ -33,4 +33,4 @@ jobs:
       #     cmd_options: '-a' 
 
       - name: ZAP Basic Scan
-        run: docker run --rm -v $(pwd):/zap/wrk/:rw -t ictu/zap2docker-weekly zap-baseline.py -t https://dev.eems-cac.me.uk -r testreport.html --hook=/zap/auth_hook.py -z auth.loginurl="https://dev.eems-cac.me.uk/login" auth.username="huangfyloveqdd@gamil.com" auth.password="Test12345678!" auth.auto=1"
+        run: docker run --rm -v $(pwd):/zap/wrk/:rw -t ictu/zap2docker-weekly zap-baseline.py -t https://dev.eems-cac.me.uk -r testreport.html --hook=/zap/auth_hook.py -z auth.loginurl="https://dev.eems-cac.me.uk/login" auth.username="huangfyloveqdd@gamil.com" auth.password="Test12345678!" auth.auto=1
